@@ -80,7 +80,7 @@ function App() {
     // Copy emojis to clipboard
     setShowModal(true);
     navigator.clipboard.writeText(emojis).then(() => {
-      setTimeout(() => setShowModal(false), 1000);
+      setTimeout(() => setShowModal(false), 4000);
     });
   };
 
