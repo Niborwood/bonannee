@@ -78,8 +78,8 @@ function App() {
   return (
     <div className="flex items-center justify-center h-screen font-inter text-xl lg:text-3xl bg-gradient-to-br from-blue-100 to-purple-400/20 p-8 text-center">
       <div className="flex flex-col gap-8 items-center">
-        <h1 className="text-center text-7xl lg:text-9xl font-bold text-purple-900">
-          Bonnannée
+        <h1 className="text-center text-7xl lg:text-9xl font-bold bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-700 text-transparent">
+          Bonannée
         </h1>
         <p>
           Envoie toi aussi les messages avec plein d'emojis{" "}
@@ -89,15 +89,17 @@ function App() {
         </p>
         <button
           onClick={handleClick}
-          className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-4 px-8 rounded-full animate-pulse margin-auto hover:animate-none transition-all w-fit"
+          className="bg-gradient-to-bl from-purple-600 to-indigo-700 hover:bg-purple-700 text-white font-bold py-4 px-8 rounded-full animate-pulse margin-auto hover:animate-none transition-all w-fit"
         >
           Bonne année !
         </button>
       </div>
       {showModal && (
-        <div className="fixed top-0 left-0 right-0 bottom-0 bg-black opacity-90 z-50">
-          <div className="absolute top-0 left-0 right-0 bottom-0 bg-white p-8 grid place-items-center">
-            <div className="font-bold text-2xl animate-bounce">{emojis}</div>
+        <div className="fixed top-0 left-0 right-0 bottom-0 bg-white/80 z-50">
+          <div className="absolute top-0 left-0 right-0 bottom-0 bg-white/50 p-8 grid place-items-center">
+            <div className="font-bold text-2xl lg:text-4xl animate-bounce bg-gradient-to-bl from-purple-600 to-indigo-700 p-12 rounded-xl text-white">
+              {emojis}
+            </div>
             <div>
               C'est copié dans ton presse-papier ! Rends des cinquentenaires
               heureux...
