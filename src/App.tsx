@@ -49,13 +49,17 @@ const EMOJIS = [
   "😿",
   "😾",
 ];
+const MESSAGES = [
+  "Bonne année !!!",
+  "Beaux tétés !!!",
+  "Beaux nénés !!!",
+  "Bannanier et pommes sautées !",
+];
 
 function App() {
   const [emojis, setEmojis] = useState("");
   const [showModal, setShowModal] = useState(false);
-
-  // Take a random emoji
-  const emoji = EMOJIS[Math.floor(Math.random() * EMOJIS.length)];
+  const [beauf, setBeauf] = useState(false);
 
   const handleClick = () => {
     const numEmojis = Math.floor(Math.random() * LENGTH) + LENGTH;
@@ -67,11 +71,16 @@ function App() {
         selectedEmojis.push(emoji);
       }
     }
-    setEmojis("Bonne année !!! " + selectedEmojis.join(""));
+    // if beauf, 1 to messages.length (do not take index 0), else, 0
+    const messageIndex = beauf
+      ? Math.floor(Math.random() * (MESSAGES.length - 1)) + 1
+      : 0;
+
+    setEmojis(`${MESSAGES[messageIndex]} ${selectedEmojis.join("")}`);
     // Copy emojis to clipboard
     setShowModal(true);
     navigator.clipboard.writeText(emojis).then(() => {
-      setTimeout(() => setShowModal(false), 4000);
+      setTimeout(() => setShowModal(false), 1000);
     });
   };
 
@@ -87,12 +96,25 @@ function App() {
           {EMOJIS[Math.floor(Math.random() * EMOJIS.length)]} que tes parents
           aiment tant
         </p>
-        <button
-          onClick={handleClick}
-          className="bg-gradient-to-bl from-purple-600 to-indigo-700 hover:bg-purple-700 text-white font-bold py-4 px-8 rounded-full animate-pulse margin-auto hover:animate-none transition-all w-fit"
-        >
-          Bonne année !
-        </button>
+        <div className="space-y-2">
+          <button
+            onClick={handleClick}
+            className="bg-gradient-to-bl from-purple-600 to-indigo-700 hover:bg-purple-700 text-white font-bold py-4 px-8 rounded-full animate-pulse margin-auto hover:animate-none transition-all w-fit"
+          >
+            Bonne année !
+          </button>
+          <div className="flex items-center gap-2">
+            <input
+              type="checkbox"
+              id="beauf-checker"
+              className="w-5 h-5 accent-indigo-600 p-2"
+              onChange={() => setBeauf((prev) => !prev)}
+            />
+            <label htmlFor="beauf-checker" className="text-base">
+              J'envoie ce message à un beauf
+            </label>
+          </div>
+        </div>
       </div>
       {showModal && (
         <div className="fixed top-0 left-0 right-0 bottom-0 bg-white/80 z-50">
