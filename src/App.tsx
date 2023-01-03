@@ -115,21 +115,21 @@ function App() {
           Envoie toi aussi les messages avec plein d'emojis {twoRandomEmojis[0]}{" "}
           foufous {twoRandomEmojis[1]} que tes parents aiment tant
         </p>
-        <div className="space-y-2">
+        <div className="space-y-3 mt-8">
           <button
             onClick={handleClick}
             className="bg-gradient-to-bl from-purple-600 to-indigo-700 hover:bg-purple-700 text-white font-bold py-4 px-8 rounded-full animate-none margin-auto hover:animate-pulse transition-all w-fit"
           >
             {beauf ? "Beaux nénés" : "Bonne année"} !
           </button>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 justify-center">
             <input
               type="checkbox"
               id="beauf-checker"
               className="w-5 h-5 accent-indigo-600 p-2"
               onChange={() => setBeauf((prev) => !prev)}
             />
-            <label htmlFor="beauf-checker" className="text-base">
+            <label htmlFor="beauf-checker" className="text-sm">
               J'envoie ce message à un beauf
             </label>
           </div>
