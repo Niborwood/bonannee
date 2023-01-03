@@ -103,9 +103,8 @@ function App() {
         text: finalToPaste,
       });
     }
-    await navigator.clipboard.writeText(emojis);
+    await navigator.clipboard.writeText(finalToPaste);
     setTimeout(() => setShowModal(false), 4000);
-    return;
   };
 
   return (
