@@ -98,6 +98,7 @@ function App() {
     setShowModal(true);
     if (navigator.share) {
       try {
+        navigator.clipboard.writeText(emojis);
         navigator
           .share({
             title: emojis,
@@ -112,19 +113,6 @@ function App() {
         return;
       } catch (err) {
         throw new Error("Erreur lors du partage");
-      }
-    }
-
-    if (navigator.clipboard) {
-      try {
-        navigator.clipboard.writeText(emojis).then(() => {
-          setTimeout(() => {
-            setShowModal(false);
-          }, 4000);
-        });
-        return;
-      } catch (err) {
-        throw new Error("Erreur lors de la copie");
       }
     }
   };
