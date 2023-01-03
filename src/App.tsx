@@ -61,7 +61,7 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [beauf, setBeauf] = useState(false);
 
-  const handleClick = () => {
+  const handleClick = async () => {
     const numEmojis = Math.floor(Math.random() * LENGTH) + LENGTH;
     const selectedEmojis = [];
     for (let i = 0; i < numEmojis; i++) {
@@ -77,11 +77,40 @@ function App() {
       : 0;
 
     setEmojis(`${MESSAGES[messageIndex]} ${selectedEmojis.join("")}`);
+
     // Copy emojis to clipboard
     setShowModal(true);
-    navigator.clipboard.writeText(emojis).then(() => {
-      setTimeout(() => setShowModal(false), 4000);
-    });
+    if (navigator.share) {
+      try {
+        navigator
+          .share({
+            title: "Bonne année",
+            text: emojis,
+          })
+          .then(() => {
+            setTimeout(() => {
+              setShowModal(false);
+            }, 4000);
+          });
+
+        return;
+      } catch (err) {
+        throw new Error("Erreur lors du partage");
+      }
+    }
+
+    if (navigator.clipboard) {
+      try {
+        navigator.clipboard.writeText(emojis).then(() => {
+          setTimeout(() => {
+            setShowModal(false);
+          }, 4000);
+        });
+        return;
+      } catch (err) {
+        throw new Error("Erreur lors de la copie");
+      }
+    }
   };
 
   return (
