@@ -92,10 +92,17 @@ function App() {
       ? Math.floor(Math.random() * (MESSAGES.length - 1)) + 1
       : 0;
 
-    setEmojis(`${MESSAGES[messageIndex]} ${selectedEmojis.join("")}`);
+    const finalToPaste = `${MESSAGES[messageIndex]} ${selectedEmojis.join("")}`;
+    setEmojis(finalToPaste);
 
     // Copy emojis to clipboard
     setShowModal(true);
+    if (navigator.share) {
+      await navigator.share({
+        title: finalToPaste,
+        text: finalToPaste,
+      });
+    }
     await navigator.clipboard.writeText(emojis);
     setTimeout(() => setShowModal(false), 4000);
     return;
