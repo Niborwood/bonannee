@@ -96,25 +96,13 @@ function App() {
 
     // Copy emojis to clipboard
     setShowModal(true);
-    if (navigator.share) {
-      try {
-        navigator.clipboard.writeText(emojis);
-        navigator
-          .share({
-            title: emojis,
-            text: emojis,
-          })
-          .then(() => {
-            setTimeout(() => {
-              setShowModal(false);
-            }, 4000);
-          });
+    navigator.clipboard.writeText(emojis).then(() => {
+      setTimeout(() => {
+        setShowModal(false);
+      }, 4000);
+    });
 
-        return;
-      } catch (err) {
-        throw new Error("Erreur lors du partage");
-      }
-    }
+    return;
   };
 
   return (
