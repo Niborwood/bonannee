@@ -144,7 +144,7 @@ function App() {
       {showModal && (
         <div className="fixed top-0 left-0 right-0 bottom-0 bg-white/90 z-50">
           <div className="absolute top-0 left-0 right-0 bottom-0 bg-white/50 p-8 grid place-items-center">
-            <div className="font-bold text-2xl lg:text-4xl animate-[bounce_1s_1.5] bg-gradient-to-bl from-purple-600 to-indigo-700 p-12 rounded-xl text-white">
+            <div className="font-bold text-2xl lg:text-4xl animate-[bounce_1s_1.5] bg-gradient-to-bl from-purple-600 to-indigo-700 p-12 rounded-xl text-white select-all">
               {emojis}
             </div>
             <div>
