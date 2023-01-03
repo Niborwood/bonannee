@@ -96,12 +96,8 @@ function App() {
 
     // Copy emojis to clipboard
     setShowModal(true);
-    navigator.clipboard.writeText(emojis).then(() => {
-      setTimeout(() => {
-        setShowModal(false);
-      }, 4000);
-    });
-
+    await navigator.clipboard.writeText(emojis);
+    setTimeout(() => setShowModal(false), 4000);
     return;
   };
 
