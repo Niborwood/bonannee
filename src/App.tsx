@@ -100,6 +100,7 @@ function App() {
       try {
         navigator
           .share({
+            title: emojis,
             text: emojis,
           })
           .then(() => {
