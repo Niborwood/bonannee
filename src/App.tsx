@@ -99,9 +99,9 @@ function App() {
         <div className="space-y-2">
           <button
             onClick={handleClick}
-            className="bg-gradient-to-bl from-purple-600 to-indigo-700 hover:bg-purple-700 text-white font-bold py-4 px-8 rounded-full animate-pulse margin-auto hover:animate-none transition-all w-fit"
+            className="bg-gradient-to-bl from-purple-600 to-indigo-700 hover:bg-purple-700 text-white font-bold py-4 px-8 rounded-full animate-none margin-auto hover:animate-pulse transition-all w-fit"
           >
-            Bonne année !
+            {beauf ? "Beaux nénés" : "Bonne année"} !
           </button>
           <div className="flex items-center gap-2">
             <input
@@ -115,6 +115,11 @@ function App() {
             </label>
           </div>
         </div>
+      </div>
+      <div className="fixed bottom-4 text-sm text-indigo-700/40 transition-all hover:text-indigo-700">
+        <a href="https://github.com/Niborwood" target="_blank" rel="noreferrer">
+          @robin - Finite
+        </a>
       </div>
       {showModal && (
         <div className="fixed top-0 left-0 right-0 bottom-0 bg-white/80 z-50">
