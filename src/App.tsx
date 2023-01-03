@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const LENGTH = 8;
 const EMOJIS = [
@@ -60,6 +60,22 @@ function App() {
   const [emojis, setEmojis] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [beauf, setBeauf] = useState(false);
+  const [twoRandomEmojis, setTwoRandomEmojis] = useState([
+    EMOJIS[Math.floor(Math.random() * EMOJIS.length)],
+    EMOJIS[Math.floor(Math.random() * EMOJIS.length)],
+  ]);
+
+  // Every 0.4 seconds, randomize twoRandomEmojis
+
+  useEffect(() => {
+    const interval = setTimeout(() => {
+      setTwoRandomEmojis([
+        EMOJIS[Math.floor(Math.random() * EMOJIS.length)],
+        EMOJIS[Math.floor(Math.random() * EMOJIS.length)],
+      ]);
+    }, 800);
+    return () => clearInterval(interval);
+  });
 
   const handleClick = async () => {
     const numEmojis = Math.floor(Math.random() * LENGTH) + LENGTH;
@@ -84,7 +100,6 @@ function App() {
       try {
         navigator
           .share({
-            title: "Bonne année",
             text: emojis,
           })
           .then(() => {
@@ -120,10 +135,8 @@ function App() {
           Bonannée
         </h1>
         <p>
-          Envoie toi aussi les messages avec plein d'emojis{" "}
-          {EMOJIS[Math.floor(Math.random() * EMOJIS.length)]} foufous{" "}
-          {EMOJIS[Math.floor(Math.random() * EMOJIS.length)]} que tes parents
-          aiment tant
+          Envoie toi aussi les messages avec plein d'emojis {twoRandomEmojis[0]}{" "}
+          foufous {twoRandomEmojis[1]} que tes parents aiment tant
         </p>
         <div className="space-y-2">
           <button
